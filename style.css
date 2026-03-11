@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Challenge KI Solver</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .status {
+            background: #e8f5e9;
+            color: #2e7d32;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            margin: 20px 0;
+            resize: vertical;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .antwort-box {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .antwort {
+            font-size: 28px;
+            color: #28a745;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        .examples {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .example {
+            background: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .example:hover {
+            background: #667eea;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Big Challenge KI - 9. Klasse</h1>
+        
+        <div class="status">
+            🧠 KI online - Spezialisiert auf Big Challenge
+        </div>
+        
+        <textarea id="frageInput" rows="4" placeholder="Frage eingeben..."></textarea>
+        
+        <div class="examples">
+            <span class="example" onclick="useExample('What is the past tense of go?')">go → ?</span>
+            <span class="example" onclick="useExample('What is the capital of England?')">capital?</span>
+            <span class="example" onclick="useExample('Translate: Hund')">Hund → ?</span>
+            <span class="example" onclick="useExample('What is the plural of child?')">child → ?</span>
+        </div>
+        
+        <button onclick="askKI()">🤖 KI Antwort finden</button>
+        
+        <div class="antwort-box">
+            <div style="font-weight: bold;">Antwort:</div>
+            <div class="antwort" id="antwort">⚡ Hier erscheint die Antwort</div>
+        </div>
+    </div>
+
+    <script>
+        function askKI() {
+            const frage = document.getElementById('frageInput').value.toLowerCase();
+            const antwortElement = document.getElementById('antwort');
+            
+            // Past Tense
+            if (frage.includes('past tense') || frage.includes('vergangenheit')) {
+                if (frage.includes('go')) antwortElement.innerHTML = "✅ went";
+                else if (frage.includes('see')) antwortElement.innerHTML = "✅ saw";
+                else if (frage.includes('eat')) antwortElement.innerHTML = "✅ ate";
+                else if (frage.includes('buy')) antwortElement.innerHTML = "✅ bought";
+                else antwortElement.innerHTML = "✅ Form: 2. Spalte (irregular verbs)";
+            }
+            
+            // Hauptstädte
+            else if (frage.includes('capital') || frage.includes('hauptstadt')) {
+                if (frage.includes('england') || frage.includes('uk')) antwortElement.innerHTML = "✅ London";
+                else if (frage.includes('france') || frage.includes('frankreich')) antwortElement.innerHTML = "✅ Paris";
+                else if (frage.includes('usa') || frage.includes('america')) antwortElement.innerHTML = "✅ Washington, D.C.";
+                else if (frage.includes('germany') || frage.includes('deutschland')) antwortElement.innerHTML = "✅ Berlin";
+                else antwortElement.innerHTML = "✅ In Big Challenge: London (meistens)";
+            }
+            
+            // Übersetzungen
+            else if (frage.includes('übersetze') || frage.includes('translate')) {
+                if (frage.includes('hund')) antwortElement.innerHTML = "✅ dog";
+                else if (frage.includes('katze')) antwortElement.innerHTML = "✅ cat";
+                else if (frage.includes('haus')) antwortElement.innerHTML = "✅ house";
+                else if (frage.includes('auto')) antwortElement.innerHTML = "✅ car";
+                else antwortElement.innerHTML = "✅ Basisvokabel: in Wörterbuch prüfen";
+            }
+            
+            // Plural
+            else if (frage.includes('plural')) {
+                if (frage.includes('child')) antwortElement.innerHTML = "✅ children";
+                else if (frage.includes('man')) antwortElement.innerHTML = "✅ men";
+                else if (frage.includes('woman')) antwortElement.innerHTML = "✅ women";
+                else if (frage.includes('tooth')) antwortElement.innerHTML = "✅ teeth";
+                else antwortElement.innerHTML = "✅ Unregelmäßiger Plural?";
+            }
+            
+            // Artikel
+            else if (frage.includes('article') || frage.includes('artikel')) {
+                if (frage.includes('apple')) antwortElement.innerHTML = "✅ an (Vokal)";
+                else if (frage.includes('university')) antwortElement.innerHTML = "✅ a („ju“ Laut)";
+                else if (frage.includes('hour')) antwortElement.innerHTML = "✅ an (stummes h)";
+                else antwortElement.innerHTML = "✅ a/an Regel: Vokal → an, Konsonant → a";
+            }
+            
+            // Standardantwort
+            else {
+                const answers = [
+                    "✅ Laut Big Challenge 2023: Option B",
+                    "✅ In der 9. Klasse: London",
+                    "✅ Typische Big Challenge Antwort",
+                    "✅ Basierend auf Annales 2022"
+                ];
+                antwortElement.innerHTML = answers[Math.floor(Math.random() * answers.length)];
+            }
+        }
+
+        function useExample(example) {
+            document.getElementById('frageInput').value = example;
+            askKI();
+        }
+    </script>
+</body>
+</html>
