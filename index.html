@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Challenge Answer Solver</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            margin: 20px 0;
+            resize: vertical;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        button:hover {
+            background: #764ba2;
+        }
+        
+        .ergebnis {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        
+        .antwort {
+            color: #28a745;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 The Big Challenge 9. Klasse</h1>
+        
+        <textarea id="frageInput" rows="4" placeholder="Frage hier einfügen..."></textarea>
+        
+        <button onclick="findeAntwort()">🔍 Antwort finden</button>
+        <button onclick="alleAnzeigen()">📋 Alle Fragen anzeigen</button>
+        
+        <div class="ergebnis" id="ergebnis">
+            <div>Ergebnis:</div>
+            <div class="antwort" id="antwort">⚡ Hier erscheint die Antwort</div>
+        </div>
+        
+        <div class="footer">
+            <p>Füge deine Fragen in die Datenbank ein!</p>
+        </div>
+    </div>
+
+    <script>
+        const datenbank = {
+            "What is the capital of England?": "London",
+            "What is the past tense of go?": "went",
+            "Translate: Hund": "dog",
+            "Translate: Katze": "cat",
+            "What is the opposite of big?": "small",
+            "What is the opposite of hot?": "cold",
+            "Which article goes with 'apple'?": "an",
+            "Which article goes with 'university'?": "a",
+            "What is the plural of 'child'?": "children",
+            "What is the plural of 'man'?": "men",
+            "What is the capital of France?": "Paris",
+            "What is the capital of the USA?": "Washington, D.C.",
+            "What is the past tense of 'eat'?": "ate",
+            "What is the past tense of 'see'?": "saw",
+            "What is the past tense of 'buy'?": "bought",
+            "What is the comparative of 'good'?": "better",
+            "What is the superlative of 'good'?": "best",
+            "What is the comparative of 'bad'?": "worse",
+            "What is the superlative of 'bad'?": "worst",
+            "What preposition for Monday?": "on",
+            "What preposition for night?": "at",
+        };
+
+        function findeAntwort() {
+            const frage = document.getElementById('frageInput').value.trim();
+            const antwortElement = document.getElementById('antwort');
+            
+            if (frage === "") {
+                antwortElement.innerHTML = "❓ Bitte Frage eingeben!";
+                return;
+            }
+            
+            if (datenbank[frage]) {
+                antwortElement.innerHTML = "✅ " + datenbank[frage];
+            } else {
+                antwortElement.innerHTML = "❌ Frage nicht in Datenbank";
+            }
+        }
+
+        function alleAnzeigen() {
+            const antwortElement = document.getElementById('antwort');
+            let text = "📚 Gespeicherte Fragen:<br><br>";
+            
+            for (let [frage, antwort] of Object.entries(datenbank)) {
+                text += `• ${frage} → ${antwort}<br>`;
+            }
+            
+            antwortElement.innerHTML = text;
+        }
+    </script>
+</body>
+</html>
