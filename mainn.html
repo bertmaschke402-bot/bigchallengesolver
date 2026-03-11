@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔍 Big Challenge Antworten</title>
+    <title>The Big Challenge 9. Klasse - Lernportal</title>
     <style>
         * {
             margin: 0;
@@ -19,118 +19,186 @@
         }
         
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background: white;
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 30px;
+            padding: 40px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
         
         h1 {
             color: #333;
+            font-size: 2.5em;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+        }
+        
+        .badge {
+            background: #ffc107;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
         }
         
         .subtitle {
             color: #666;
-            margin-bottom: 30px;
-            font-size: 0.9em;
-        }
-        
-        .input-section {
-            margin-bottom: 20px;
-        }
-        
-        textarea {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 16px;
-            resize: vertical;
-            margin-bottom: 15px;
-            transition: border-color 0.3s;
-        }
-        
-        textarea:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        
-        button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: transform 0.2s;
-            border: 2px solid transparent;
-        }
-        
-        button:hover {
-            transform: scale(1.05);
-            border-color: white;
-        }
-        
-        .ergebnis-box {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
+            margin-bottom: 40px;
+            font-size: 1.2em;
             border-left: 5px solid #667eea;
+            padding-left: 20px;
         }
         
-        .antwort-text {
-            font-size: 24px;
-            color: #28a745;
-            font-weight: bold;
-            margin-top: 10px;
+        .link-section {
+            margin-bottom: 30px;
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 25px;
+            transition: transform 0.3s;
         }
         
-        .nicht-gefunden {
-            color: #dc3545;
+        .link-section:hover {
+            transform: translateX(10px);
         }
         
-        .stats {
-            color: #666;
-            font-size: 14px;
-            margin-top: 10px;
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #495057;
         }
         
-        .datenbank-info {
-            background: #fff3cd;
-            border: 1px solid #ffeeba;
-            border-radius: 10px;
+        .link-card {
+            background: white;
+            border-radius: 15px;
             padding: 20px;
+            margin-bottom: 15px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s;
+        }
+        
+        .link-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        }
+        
+        .link-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.2em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .link-card a:hover {
+            text-decoration: underline;
+        }
+        
+        .link-desc {
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+        
+        .link-tag {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: #495057;
+            margin-right: 10px;
+        }
+        
+        .app-box {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            border-radius: 20px;
+            padding: 30px;
+            color: white;
+            text-align: center;
             margin-top: 30px;
         }
         
-        .datenbank-info h3 {
-            color: #856404;
+        .app-box h3 {
+            font-size: 2em;
             margin-bottom: 15px;
         }
         
-        .datenbank-info pre {
+        .app-box p {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+        }
+        
+        .app-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .app-button {
             background: white;
-            padding: 15px;
-            border-radius: 5px;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            border: 1px solid #ffeeba;
+            color: #28a745;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: transform 0.3s;
+        }
+        
+        .app-button:hover {
+            transform: scale(1.05);
+            background: #f8f9fa;
         }
         
         .footer {
             text-align: center;
-            margin-top: 20px;
-            color: #666;
-            font-size: 14px;
+            margin-top: 40px;
+            color: #adb5bd;
+            font-size: 0.9em;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: #e9ecef;
+            padding: 15px 25px;
+            border-radius: 15px;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            color: #6c757d;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8em;
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -138,139 +206,136 @@
     <div class="container">
         <h1>
             <span>📚 The Big Challenge</span>
-            <span style="font-size: 14px; background: #ffc107; padding: 5px 10px; border-radius: 20px;">9. Klasse</span>
+            <span class="badge">9. Klasse</span>
         </h1>
-        <p class="subtitle">Frage einfügen - Antwort erhalten (Datenbank muss befüllt werden!)</p>
         
-        <div class="input-section">
-            <textarea id="frageInput" rows="4" placeholder="Frage hier einfügen oder eintippen... z.B.: What is the capital of England?"></textarea>
-            <button onclick="findeAntwort()">🔍 Antwort finden</button>
-            <button onclick="alleAnzeigen()" style="margin-left: 10px; background: linear-gradient(135deg, #28a745, #20c997);">📋 Alle Einträge anzeigen</button>
+        <p class="subtitle">
+            🎯 Deine zentrale Sammlung mit ALLEN offiziellen Lernmaterialien & Übungsfragen
+        </p>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">20.000+</div>
+                <div class="stat-label">Fragen in der App</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2010-2024</div>
+                <div class="stat-label">Alle Jahrgänge</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">Kostenlos</div>
+                <div class="stat-label">100% legal</div>
+            </div>
         </div>
         
-        <div class="ergebnis-box" id="ergebnisBox">
-            <div style="font-weight: bold; margin-bottom: 10px;">Ergebnis:</div>
-            <div id="antwort" class="antwort-text">⚡ Hier erscheint die Antwort</div>
-            <div class="stats" id="stats"></div>
+        <!-- OFFIZIELLE QUELLEN -->
+        <div class="link-section">
+            <div class="section-title">
+                <span>🏆</span>
+                <span>Offizielle Big Challenge Quellen</span>
+            </div>
+            
+            <div class="link-card">
+                <a href="https://www.thebigchallenge.com/de/student/annales/" target="_blank">
+                    📅 Frühere Wettbewerbe (Annales)
+                </a>
+                <div class="link-desc">
+                    ALLE offiziellen Tests der letzten Jahre mit Lösungen! Hier findest du die echten Fragen aus 2010-2024.
+                </div>
+                <span class="link-tag">Klasse 5-9</span>
+                <span class="link-tag">Mit Lösungen</span>
+                <span class="link-tag">PDF</span>
+            </div>
+            
+            <div class="link-card">
+                <a href="https://www.thebigchallenge.com/de/teacher/trainingsmaterialien/" target="_blank">
+                    📚 Offizielle Trainingsmaterialien
+                </a>
+                <div class="link-desc">
+                    Vokabellisten, Grammatikübungen und Vorbereitungstests von den Machern des Wettbewerbs.
+                </div>
+                <span class="link-tag">Kostenlos</span>
+                <span class="link-tag">Zum Ausdrucken</span>
+            </div>
         </div>
         
-        <div class="datenbank-info">
-            <h3>📝 WICHTIG: Datenbank manuell befüllen!</h3>
-            <p>Ich habe <strong>KEINE</strong> offizielle Liste aller Fragen finden können[citation:1][citation:3]. Du musst die Fragen selbst eintragen!</p>
-            <p><strong>So geht's:</strong> Ersetze die Beispiele im Code unten mit echten Big-Challenge-Fragen:</p>
-            <pre>
-// === HIER MUSST DU ALLE FRAGEN EINTRAGEN ===
-const datenbank = {
-    // Beispiel aus früheren Wettbewerben[citation:2]:
-    "What is the capital of the United Kingdom?": "London",
-    "Which river flows through London?": "the Thames",
-    "Translate: Hund": "dog",
-    "Past tense of 'go'": "went",
-    "What is the biggest English-speaking country?": "United States",
-    
-    // HIER WEITERE FRAGEN HINZUFÜGEN:
-    "Frage aus Test 2023": "Antwort",
-    "Frage aus Test 2022": "Antwort",
-    // ... usw.
-};
-            </pre>
-            <p style="margin-top: 15px; color: #856404;">
-                ⚠️ Tipp: Die offizielle App "The Big Challenge PLAY" hat über 20.000 Fragen[citation:3] - aber die sind leider nicht öffentlich als Liste verfügbar.
-            </p>
+        <!-- DIE APP (20.000+ FRAGEN!) -->
+        <div class="app-box">
+            <h3>📱 The Big Challenge PLAY App</h3>
+            <p>⭐ Über 20.000 Fragen aus früheren Wettbewerben! ⭐</p>
+            <p>Die OFFIZIELLE Lern-App - Kostenlos im Store</p>
+            
+            <div class="app-buttons">
+                <a href="https://apps.apple.com/de/app/the-big-challenge-play/id1479529038" class="app-button" target="_blank">
+                    📱 App Store
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=air.com.thebigchallenge.play&hl=de" class="app-button" target="_blank">
+                    📱 Google Play
+                </a>
+            </div>
+        </div>
+        
+        <!-- WEITERE HILFREICHE LINKS -->
+        <div class="link-section">
+            <div class="section-title">
+                <span>🎯</span>
+                <span>Speziell für die 9. Klasse</span>
+            </div>
+            
+            <div class="link-card">
+                <a href="https://www.thebigchallenge.com/de/student/training/" target="_blank">
+                    🎮 Online-Training für Schüler
+                </a>
+                <div class="link-desc">
+                    Interaktive Übungen speziell für deine Klassenstufe.
+                </div>
+                <span class="link-tag">9. Klasse Fokus</span>
+                <span class="link-tag">Online-Quiz</span>
+            </div>
+            
+            <div class="link-card">
+                <a href="https://www.thebigchallenge.com/de/student/wordlists/" target="_blank">
+                    📖 Offizielle Vokabellisten
+                </a>
+                <div class="link-desc">
+                    Alle wichtigen Vokabeln für die 9. Klasse - nach Themen sortiert.
+                </div>
+                <span class="link-tag">PDF Download</span>
+                <span class="link-tag">Thematisch</span>
+            </div>
+        </div>
+        
+        <!-- TIPPS FÜR DIE VORBEREITUNG -->
+        <div class="link-section">
+            <div class="section-title">
+                <span>💡</span>
+                <span>Tipps für Top-Ergebnisse</span>
+            </div>
+            
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin: 15px 0; display: flex; align-items: center; gap: 10px;">
+                    <span style="background: #28a745; color: white; width: 25px; height: 25px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;">✓</span>
+                    Mache JEDEN TAG 10-15 Minuten in der PLAY App
+                </li>
+                <li style="margin: 15px 0; display: flex; align-items: center; gap: 10px;">
+                    <span style="background: #28a745; color: white; width: 25px; height: 25px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;">✓</span>
+                    Lade ALLE alten Tests von der Annales-Seite herunter
+                </li>
+                <li style="margin: 15px 0; display: flex; align-items: center; gap: 10px;">
+                    <span style="background: #28a745; color: white; width: 25px; height: 25px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;">✓</span>
+                    Konzentriere dich auf die Fehler - verstehe WARUM etwas falsch war
+                </li>
+                <li style="margin: 15px 0; display: flex; align-items: center; gap: 10px;">
+                    <span style="background: #28a745; color: white; width: 25px; height: 25px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;">✓</span>
+                    Übe mit Freunden - gegenseitiges Abfragen hilft enorm!
+                </li>
+            </ul>
         </div>
         
         <div class="footer">
-            <p>🔒 Läuft komplett im Browser - keine Server notwendig. 100% privat.</p>
+            <p>🔗 Alle Links führen zu offiziellen, kostenlosen Quellen von The Big Challenge</p>
+            <p>🎓 Viel Erfolg beim Wettbewerb! Du schaffst das! 🌟</p>
         </div>
     </div>
-
-    <script>
-        // ===========================================
-        // 🚨 HIER MUSST DU DIE ECHTEN FRAGEN EINTRAGEN!
-        // ===========================================
-        const datenbank = {
-            // Beispiel-Fragen (ersetzen mit echten Big-Challenge-Fragen!)
-            "What is the capital of England?": "London",
-            "What is the capital of the USA?": "Washington, D.C.",
-            "Translate 'Hund' to English": "dog",
-            "Translate 'Katze' to English": "cat",
-            "What is the past tense of 'eat'?": "ate",
-            "What is the past tense of 'see'?": "saw",
-            "Which country is famous for the Eiffel Tower?": "France",
-            "Which country is famous for the Taj Mahal?": "India",
-            "What is the opposite of 'big'?": "small",
-            "What is the opposite of 'hot'?": "cold",
-            
-            // 📝 HIER WEITERE FRAGEN HINZUFÜGEN:
-            // "Frage aus Big Challenge 2023": "Antwort",
-            // "Frage aus Big Challenge 2022": "Antwort",
-            // "Frage aus Übungstest": "Antwort",
-        };
-        // ===========================================
-
-        function findeAntwort() {
-            const frage = document.getElementById('frageInput').value.trim();
-            const antwortElement = document.getElementById('antwort');
-            const statsElement = document.getElementById('stats');
-            
-            if (frage === "") {
-                antwortElement.innerHTML = "⚠️ Bitte eine Frage eingeben!";
-                antwortElement.className = "antwort-text nicht-gefunden";
-                statsElement.innerHTML = "";
-                return;
-            }
-            
-            // Exakte Suche
-            if (datenbank[frage]) {
-                antwortElement.innerHTML = "✅ " + datenbank[frage];
-                antwortElement.className = "antwort-text";
-                statsElement.innerHTML = `✔️ Gefunden in Datenbank (${Object.keys(datenbank).length} Fragen gespeichert)`;
-            } 
-            // Teilsuche (falls jemand nicht die exakte Formulierung hat)
-            else {
-                const gefunden = Object.keys(datenbank).find(key => 
-                    key.toLowerCase().includes(frage.toLowerCase()) || 
-                    frage.toLowerCase().includes(key.toLowerCase())
-                );
-                
-                if (gefunden) {
-                    antwortElement.innerHTML = "✅ " + datenbank[gefunden] + " <span style='font-size:14px; color:gray;'>(gefunden für: \"" + gefunden + "\")</span>";
-                    antwortElement.className = "antwort-text";
-                    statsElement.innerHTML = `✔️ Ähnlicher Eintrag gefunden (Datenbankgröße: ${Object.keys(datenbank).length} Fragen)`;
-                } else {
-                    antwortElement.innerHTML = "❓ Frage nicht in der Datenbank";
-                    antwortElement.className = "antwort-text nicht-gefunden";
-                    statsElement.innerHTML = `📊 Datenbank enthält aktuell ${Object.keys(datenbank).length} Fragen. Du musst mehr eintragen!`;
-                }
-            }
-        }
-        
-        function alleAnzeigen() {
-            const antwortElement = document.getElementById('antwort');
-            const statsElement = document.getElementById('stats');
-            
-            const eintraege = Object.entries(datenbank)
-                .map(([frage, antwort]) => `• ${frage} → ${antwort}`)
-                .join('<br>');
-            
-            if (Object.keys(datenbank).length > 0) {
-                antwortElement.innerHTML = `📚 Gespeicherte Fragen (${Object.keys(datenbank).length}):<br><br>${eintraege}`;
-                antwortElement.className = "antwort-text";
-                antwortElement.style.fontSize = "16px";
-                statsElement.innerHTML = "Zeige alle Einträge";
-            } else {
-                antwortElement.innerHTML = "❌ Datenbank ist leer!";
-                antwortElement.className = "antwort-text nicht-gefunden";
-            }
-        }
-        
-        // Enter-Taste im Textarea
-        document.getElementById('frageInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                findeAntwort();
-            }
-        });
-    </script>
 </body>
 </html>
