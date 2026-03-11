@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔍 Big Challenge Antworten</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+        
+        .input-section {
+            margin-bottom: 20px;
+        }
+        
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            resize: vertical;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            border: 2px solid transparent;
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+            border-color: white;
+        }
+        
+        .ergebnis-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+        
+        .antwort-text {
+            font-size: 24px;
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .nicht-gefunden {
+            color: #dc3545;
+        }
+        
+        .stats {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .datenbank-info {
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .datenbank-info h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+        
+        .datenbank-info pre {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            border: 1px solid #ffeeba;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            <span>📚 The Big Challenge</span>
+            <span style="font-size: 14px; background: #ffc107; padding: 5px 10px; border-radius: 20px;">9. Klasse</span>
+        </h1>
+        <p class="subtitle">Frage einfügen - Antwort erhalten (Datenbank muss befüllt werden!)</p>
+        
+        <div class="input-section">
+            <textarea id="frageInput" rows="4" placeholder="Frage hier einfügen oder eintippen... z.B.: What is the capital of England?"></textarea>
+            <button onclick="findeAntwort()">🔍 Antwort finden</button>
+            <button onclick="alleAnzeigen()" style="margin-left: 10px; background: linear-gradient(135deg, #28a745, #20c997);">📋 Alle Einträge anzeigen</button>
+        </div>
+        
+        <div class="ergebnis-box" id="ergebnisBox">
+            <div style="font-weight: bold; margin-bottom: 10px;">Ergebnis:</div>
+            <div id="antwort" class="antwort-text">⚡ Hier erscheint die Antwort</div>
+            <div class="stats" id="stats"></div>
+        </div>
+        
+        <div class="datenbank-info">
+            <h3>📝 WICHTIG: Datenbank manuell befüllen!</h3>
+            <p>Ich habe <strong>KEINE</strong> offizielle Liste aller Fragen finden können[citation:1][citation:3]. Du musst die Fragen selbst eintragen!</p>
+            <p><strong>So geht's:</strong> Ersetze die Beispiele im Code unten mit echten Big-Challenge-Fragen:</p>
+            <pre>
+// === HIER MUSST DU ALLE FRAGEN EINTRAGEN ===
+const datenbank = {
+    // Beispiel aus früheren Wettbewerben[citation:2]:
+    "What is the capital of the United Kingdom?": "London",
+    "Which river flows through London?": "the Thames",
+    "Translate: Hund": "dog",
+    "Past tense of 'go'": "went",
+    "What is the biggest English-speaking country?": "United States",
+    
+    // HIER WEITERE FRAGEN HINZUFÜGEN:
+    "Frage aus Test 2023": "Antwort",
+    "Frage aus Test 2022": "Antwort",
+    // ... usw.
+};
+            </pre>
+            <p style="margin-top: 15px; color: #856404;">
+                ⚠️ Tipp: Die offizielle App "The Big Challenge PLAY" hat über 20.000 Fragen[citation:3] - aber die sind leider nicht öffentlich als Liste verfügbar.
+            </p>
+        </div>
+        
+        <div class="footer">
+            <p>🔒 Läuft komplett im Browser - keine Server notwendig. 100% privat.</p>
+        </div>
+    </div>
+
+    <script>
+        // ===========================================
+        // 🚨 HIER MUSST DU DIE ECHTEN FRAGEN EINTRAGEN!
+        // ===========================================
+        const datenbank = {
+            // Beispiel-Fragen (ersetzen mit echten Big-Challenge-Fragen!)
+            "What is the capital of England?": "London",
+            "What is the capital of the USA?": "Washington, D.C.",
+            "Translate 'Hund' to English": "dog",
+            "Translate 'Katze' to English": "cat",
+            "What is the past tense of 'eat'?": "ate",
+            "What is the past tense of 'see'?": "saw",
+            "Which country is famous for the Eiffel Tower?": "France",
+            "Which country is famous for the Taj Mahal?": "India",
+            "What is the opposite of 'big'?": "small",
+            "What is the opposite of 'hot'?": "cold",
+            
+            // 📝 HIER WEITERE FRAGEN HINZUFÜGEN:
+            // "Frage aus Big Challenge 2023": "Antwort",
+            // "Frage aus Big Challenge 2022": "Antwort",
+            // "Frage aus Übungstest": "Antwort",
+        };
+        // ===========================================
+
+        function findeAntwort() {
+            const frage = document.getElementById('frageInput').value.trim();
+            const antwortElement = document.getElementById('antwort');
+            const statsElement = document.getElementById('stats');
+            
+            if (frage === "") {
+                antwortElement.innerHTML = "⚠️ Bitte eine Frage eingeben!";
+                antwortElement.className = "antwort-text nicht-gefunden";
+                statsElement.innerHTML = "";
+                return;
+            }
+            
+            // Exakte Suche
+            if (datenbank[frage]) {
+                antwortElement.innerHTML = "✅ " + datenbank[frage];
+                antwortElement.className = "antwort-text";
+                statsElement.innerHTML = `✔️ Gefunden in Datenbank (${Object.keys(datenbank).length} Fragen gespeichert)`;
+            } 
+            // Teilsuche (falls jemand nicht die exakte Formulierung hat)
+            else {
+                const gefunden = Object.keys(datenbank).find(key => 
+                    key.toLowerCase().includes(frage.toLowerCase()) || 
+                    frage.toLowerCase().includes(key.toLowerCase())
+                );
+                
+                if (gefunden) {
+                    antwortElement.innerHTML = "✅ " + datenbank[gefunden] + " <span style='font-size:14px; color:gray;'>(gefunden für: \"" + gefunden + "\")</span>";
+                    antwortElement.className = "antwort-text";
+                    statsElement.innerHTML = `✔️ Ähnlicher Eintrag gefunden (Datenbankgröße: ${Object.keys(datenbank).length} Fragen)`;
+                } else {
+                    antwortElement.innerHTML = "❓ Frage nicht in der Datenbank";
+                    antwortElement.className = "antwort-text nicht-gefunden";
+                    statsElement.innerHTML = `📊 Datenbank enthält aktuell ${Object.keys(datenbank).length} Fragen. Du musst mehr eintragen!`;
+                }
+            }
+        }
+        
+        function alleAnzeigen() {
+            const antwortElement = document.getElementById('antwort');
+            const statsElement = document.getElementById('stats');
+            
+            const eintraege = Object.entries(datenbank)
+                .map(([frage, antwort]) => `• ${frage} → ${antwort}`)
+                .join('<br>');
+            
+            if (Object.keys(datenbank).length > 0) {
+                antwortElement.innerHTML = `📚 Gespeicherte Fragen (${Object.keys(datenbank).length}):<br><br>${eintraege}`;
+                antwortElement.className = "antwort-text";
+                antwortElement.style.fontSize = "16px";
+                statsElement.innerHTML = "Zeige alle Einträge";
+            } else {
+                antwortElement.innerHTML = "❌ Datenbank ist leer!";
+                antwortElement.className = "antwort-text nicht-gefunden";
+            }
+        }
+        
+        // Enter-Taste im Textarea
+        document.getElementById('frageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                findeAntwort();
+            }
+        });
+    </script>
+</body>
+</html>
